@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import firebase from 'firebase';
 import { Button, Card, CardSection, Input, Spinner } from './common';
 
@@ -37,11 +37,12 @@ class LoginForm extends Component {
     if (this.state.loading) {
       return <Spinner size="small" />;
     }
-
+    <View> {'\n'} </View>
     return (
-      <Button onPress={this.onButtonPress.bind(this)}>
-        Log in
+      <Button onPress={this.onButtonPress.bind(this)}> 
+         Log in
       </Button>
+      
     );
   }
 

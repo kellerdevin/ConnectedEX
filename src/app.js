@@ -116,7 +116,7 @@ class App extends Component {
           <Text style={[styles.rat]}>
             {'\n'}Louis Vuitton / Supreme {'\n'}
             <Text style={[styles.rast]}>
-              Christopher Backpack PM        <Text style={[styles.views]}>   View    </Text>{'\n'}
+              Christopher Backpack PM        <Button>   View    </Button>{'\n'}
               {'\n'} {'\n'}
               <View style={{ width: 500, height: 1, backgroundColor: 'grey' }} />
             </Text>

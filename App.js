@@ -42,6 +42,7 @@ class App extends Component {
 
             </Text>                      
           </Text>
+          
 
           <Image
             style={styles.profile}

@@ -3,9 +3,6 @@ import { AppRegistry, StyleSheet, Text, View, Image, } from 'react-native';
 import { Button } from './Button';
 import { VButton } from './VButton';
 import { createStackNavigator } from 'react-navigation';
-import { StackNavigator } from 'react-navigation';
-
-
 
 class ProdPage extends React.Component {
   render() {

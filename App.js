@@ -3,6 +3,7 @@ import { AppRegistry, StyleSheet, Text, View, Image, } from 'react-native';
 import firebase from 'firebase';
 import { Header, Button, Spinner } from './src/components/common';
 import LoginForm from './src/components/LoginForm';
+import { createStackNavigator } from 'react-navigation';
 
 class App extends Component {
   state = { loggedIn: null };
@@ -143,6 +144,7 @@ class App extends Component {
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   all: {

@@ -1,40 +1,20 @@
-import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, Image, Linking } from 'react-native';
-import firebase from 'firebase';
-import { Header, Button, Spinner } from './components/common';
-import LoginForm from './components/LoginForm';
+import React, { Component, } from 'react';
+import { AppRegistry, StyleSheet, Text, View, Image, } from 'react-native';
+import { Button } from './Button';
+import { VButton } from './VButton';
+import { createStackNavigator } from 'react-navigation';
+import { StackNavigator } from 'react-navigation';
 
 
-class App extends Component {
-  state = { loggedIn: null };
 
-  componentWillMount() {
-    firebase.initializeApp({
-      apiKey: "AIzaSyAm8W1O7eCai0zaqaSLkheGElyLwajJ3JY",
-      authDomain: "auth-87f79.firebaseapp.com",
-      databaseURL: "https://auth-87f79.firebaseio.com",
-      projectId: "auth-87f79",
-      storageBucket: "auth-87f79.appspot.com",
-      messagingSenderId: "701060929041"
-    });
-
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({ loggedIn: true });
-      } else {
-        this.setState({ loggedIn: false });
-      }
-    });
-  }
-
-  renderContent() {
-    switch (this.state.loggedIn) {
-      case true:
-        return (
-          <View>
+class ProdPage extends React.Component {
+  render() {
+    return (
+      
+      <View>
         <View style={{ width: 500, height: 30, backgroundColor: 'white' }} />
         <View style={{ flexDirection: "row" }}>
-          <Text style={[styles.header, styles.bold, styles.all]}>Wallet                            {'\n'}
+          <Text style={[styles.header, styles.bold, styles.all]}>Wallet                             {'\n'}
                   <Text style={[styles.hash, styles.gray, styles.all]}>
               f709bb947a25511c56f15...
             <Text style={[styles.copy]}>
@@ -44,10 +24,6 @@ class App extends Component {
             </Text>                      
           </Text>
 
-          <Image
-            style={styles.profile}
-            source={{ uri: 'https://lovetobeinthekitchen.com/wp-content/uploads/2015/04/Emily-Circle-Profile-e1428003256512.png' }}
-          />
         </View>
         
         <View style={{ width: 500, height: 1, backgroundColor: 'grey' }} />
@@ -57,24 +33,14 @@ class App extends Component {
         <Text style={[styles.blue, styles.newProd, styles.all]}>NEW PRODUCT</Text>
         <Text style={[styles.prodTitle, styles.all]}>2016 Louis Vuitton Keepall</Text>
         <Text style={[styles.subTitle, styles.gray, styles.all]}>Classic Monogram</Text>
-        <View>
-          <Image
-            style={{
-              width: 200,
-              height: 200,
-              alignSelf: 'center',
-              paddingBottom: 5,
-            }}
-            source={{ uri: 'https://a.1stdibscdn.com/archivesE/upload/1121189/v_34701811510039784334/3470181_master.jpg?width=500' }}
-          />
-        </View>
+        <VButton/>
         <View style={{ width: 500, height: 1, backgroundColor: 'gray', }} />
         <View>
-          <View style={{ width: 500, height: 15, backgroundColor: 'white' }} />
+          <View style={{ width: 500, height: 10, backgroundColor: 'white' }} />
           <Text style={[styles.recentAdd, styles.bold, styles.all]}>Recent Additions
           
-           <Text style={[styles.seeAll, styles.blue, ]}>                           See All</Text>
-            <View style={{ width: 500, height: 20, backgroundColor: 'white' }} />
+           <Text style={[styles.seeAll, styles.blue,]}>                                        See All</Text>
+            <View style={{ width: 500, height: 5, backgroundColor: 'white' }} />
           </Text>
         </View>
         <View style={{ flexDirection: "row", }}>
@@ -116,7 +82,7 @@ class App extends Component {
           <Text style={[styles.rat]}>
             {'\n'}Louis Vuitton / Supreme {'\n'}
             <Text style={[styles.rast]}>
-              Christopher Backpack PM        <Button>   View    </Button>{'\n'}
+              Christopher Backpack PM        <Text style={[styles.views]}>   View    </Text>{'\n'}
               {'\n'} {'\n'}
               <View style={{ width: 500, height: 1, backgroundColor: 'grey' }} />
             </Text>
@@ -126,20 +92,6 @@ class App extends Component {
 
       </View>
 
-        );
-      case false:
-        return <LoginForm />;
-      default:
-        return <Spinner size="large" />;
-    }
-  }
-
-  render() {
-    return (
-      <View>
-        <Header headerText="" />
-        {this.renderContent()}
-      </View>
     );
   }
 }
@@ -173,16 +125,17 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   recentAdd: {
-    fontSize: 22,
+    fontSize: 18,
     paddingLeft: 10,
   },
   seeAll: {
-    fontSize: 15,
+    fontSize: 13,
+    textAlign: 'right',
     fontWeight: 'normal',
   },
   rA: {
     width: 90,
-    height: 90,
+    height: 80,
     paddingBottom: 1,
   },
   rat: {
@@ -201,22 +154,25 @@ const styles = StyleSheet.create({
   views: {
     color: 'blue',
     backgroundColor: 'whitesmoke',
+    textAlign: 'right',
     fontWeight: 'bold',
     flex: 1,
     flexDirection: 'column',
     margin: 30,
     marginTop: 560,
+    backgroundColor: 'whitesmoke',
     minHeight: 60,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 30,
-    fontSize: 16,
+    borderRadius: 30
   },
-    profile: {
+
+  profile: {
     width: 70,
     height: 60,
   }
+
+
 });
 
-
-export default App;
+export { ProdPage };

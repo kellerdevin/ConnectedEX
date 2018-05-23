@@ -54,7 +54,6 @@ class ProdPage extends React.Component {
             </Text>
           </Text>
         </View>
-
         <View style={{ flexDirection: "row" }}>
 
           <Image
